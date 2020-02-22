@@ -1,4 +1,9 @@
 const paypal = require('paypal-rest-sdk')
+var CLIENT =
+  'AfKNmv9U_I4XxdZ3UezuG7dwFjL_5IGi7GA0VZEiGLAZV';
+var SECRET =
+  'EDg4Cf8rvTeZgxucrEOpBHIu3hsDfHWok-jtTyHnOaQAnpIrhaM_POPpHB2dNx5C-tqRIL1Bwc_cQm_W';
+var PAYPAL_API = 'https://api.sandbox.paypal.com';
 
 paypal.configure({
   'mode': 'sandbox',
@@ -29,6 +34,11 @@ var create_payment_json = {
           "currency": "PHP",
           "total": "2070.00"
       },
-      "description": "This is the payment description."
+      "description": ""
   }]
 };
+
+module.exports = {
+    json: create_payment_json,
+    paypal: paypal
+}

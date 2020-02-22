@@ -1,0 +1,44 @@
+<div class="landing__logo__title--nomove">
+    <span>Enka</span>
+    <br/>
+    <span class="landing__logo__title__sub">
+      TARA KAIN!
+    </span>
+  </div>
+  
+<p class="landing__content">
+  Ang subkripsyon na iyong matatanggap ay para sa 100  pesos na masasarap na hapunan para sa isang buwan <b>mula Lunes hanggang Biyernes.
+<br/> <br/>
+Kami ay hihingi ng renewal sa bawat isang linggo bago ang katapusan ng buwan</b>
+<br/>
+<br/>
+  <div id="paypal-button-container"></div>
+</p>
+
+<script
+    src="https://www.paypal.com/sdk/js?client-id=AfKNmv9U_I4XxdZ3UezuG7dwFjL_5IGi7GA0VZEiGLAZV-_2qPrxCM7pko3Ey_S-8Tkh5HqsOpl4SMS5"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+  </script>
+<script>
+  paypal.Buttons({
+    createOrder: function(data, actions) {
+      // This function sets up the details of the transaction, including the amount and line item details.
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: '2070.00'
+          }
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(details) {
+        console.log(data)
+        alert('Transaction completed by ' + details.payer.name.given_name);
+        // Call your server to save the transaction
+        return $.post('/api/paypal/pay/execute', {
+            orderID: data.orderID
+          })
+      });
+    }
+  }).render('#paypal-button-container');
+</script>

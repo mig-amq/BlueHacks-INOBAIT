@@ -1,0 +1,42 @@
+.forms {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.input-group {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #9C9C9C;
+  max-width: 250px;
+  width: 250px;
+  margin-bottom: 15px;
+
+  span{
+    text-align: center;
+    min-width: 45px;
+    color: #FF5412;
+    padding: 5px 10px;
+    border-right: 1px solid #9C9C9C;
+    
+    img {
+      height: 16px;
+      width: auto;
+    }
+  }
+
+  input {
+    background: transparent;
+    padding: 5px 10px;
+    border: 0;
+    width: 100%;
+    color: #fff;
+
+    &:focus {
+      outline: none;
+      border: 0;
+    }
+  }
+}

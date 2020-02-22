@@ -1,12 +1,14 @@
-@import "landing";
-@import "forms";
-@import "complete_information";
-
 * {
   box-sizing: border-box;
+  font-family: 'Rubik';
 }
 
 body {
   margin: 0;
   padding: 0;
 }
+
+@import "landing";
+@import "forms";
+@import "complete_information";
+@import "region";

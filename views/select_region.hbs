@@ -1,0 +1,46 @@
+<img class="select__header" src="/images/region_header.png">
+<img class="select__footer" src="/images/region_footer.png">
+<button>Dito Tayo!</button>
+
+<img class='select__region__header' src="/images/region/{{id}}-head.png">
+<p id='0'>
+  Halos lahat ng pagkain na pwede mong kainin sa foodtrip sa Ilocos, pwede mo na mapa-deliver!
+  Empanada? Longganisa? Okoy? meron kami!
+</p>
+<p id='1'>
+  Sagana sa masasarap na potahe na ginagamit ang Tilapia.
+Pero wag nating kakalimutan ang mga panalong mga kakanin na pwede mong matikman bilang side dish!
+</p>
+<div class="meals">
+  <div class="meal">
+    <div class="image">
+    </div>
+    <div class="description">
+    </div>
+  </div>
+</div>
+
+<script>
+  let region_id = {{id}};
+
+  $("#0").hide();
+  $("#1").hide();
+
+  $("#{{id}}").show()
+  $("body.region").css("background-image", "url('/images/region/" + region_id + ".png')")
+
+  $("button").click((e) => {
+    e.preventDefault();
+
+    $.ajax({
+      url: "/api/users/complete_information/partial_2",
+      method: "get",
+      data: {
+        id: region_id
+      },
+      success: () => {
+        location.replace("http://localhost:3000/paypal")
+      }
+    })
+  })
+</script>

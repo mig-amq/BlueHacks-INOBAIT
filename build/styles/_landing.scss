@@ -32,6 +32,7 @@
     font-family: "quiapo";
 
     > span:not(.landing__logo__title__sub) {
+      font-family: "quiapo";
       font-size: 4em;
       color: #ff5412;
     }
@@ -52,6 +53,32 @@
       padding-left: calc(50% - 300px / 2);
     }
   }
+
+  .landing__logo__title--nomove {
+    text-align: center;
+    padding-top: 2em;
+    font-family: "quiapo";
+
+    > span:not(.landing__logo__title__sub) {
+      font-family: "quiapo";
+      font-size: 4em;
+      color: #ff5412;
+    }
+
+    .landing__logo__title__sub {
+      padding-top: 3px;
+      font-family: 'kapayapaan';
+      font-size: 2.5em;
+      color: #ffffff;
+    }
+  }
+}
+
+p.landing__content {
+  color: #fff;
+  padding: 25px;
+  font-size: 1.25em;
+  text-align:  center;
 }
 
 // keyframes

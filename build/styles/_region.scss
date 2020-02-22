@@ -1,0 +1,44 @@
+.select__header {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+.select__footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.region {
+  padding-top: 156px;
+  min-height: 100vh;
+  min-width: 100vw;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  p {
+    padding: 20px;
+    font-size: 1.5em;
+    color: #fff;
+    text-align: center;
+  }
+
+  button {
+    position: fixed;
+    bottom: 35px;
+    right: 25px;
+    z-index: 1100;
+    padding: 6px;
+    font-size: 1.3em;
+    border: 1px solid #ff5412;
+    border-radius: 3px;
+    color: #fff;
+    background-color: #ff5412;
+  }
+}

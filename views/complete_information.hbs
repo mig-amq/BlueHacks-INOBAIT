@@ -1,6 +1,45 @@
-<div class="logo">
-  ENKA
-</div>
-<div class="forms">
-  <input type="text" placeholder="910 000 0000">
-</div>
+<form id="submit">
+  <div class="logo">
+    ENKA
+  </div>
+  <div class="forms">
+    <div class="input-group">
+      <span>+63</span>
+      <input type="text" name="contact" placeholder="910 000 0000" required>
+    </div>
+    <div class="input-group">
+      <span><img src="/images/google-maps.png" alt="Address"></span>
+      <input type="text" name="lunchtime" placeholder="address ng delivery" required>
+    </div>
+    </div>
+    <div class="input-group">
+      <span><img src="/images/clock.svg" alt="Time"></span>
+      <input type="time" name="pickup" placeholder="oras ng pagkakainan" required>
+    </div>
+  </div>
+  <div class="complete_registration">
+    <p>
+      Handa ka na ba? {{user.name}}
+    </p>
+    <button>TARA!</button>
+  </div>
+</form>
+
+<script>
+  $("#submit").on("submit", (e) => {
+    e.preventDefault()
+    let data = {}
+    $("input").each((i, o) => {
+      data[$(o).attr('name')] = $(o).val()
+    })
+    
+    $.ajax({
+      url: "/api/users/complete_information/partial",
+      method: 'get',
+      data: data,
+      success: () => {
+        location.replace("http://localhost:3000/select_region/0")
+      }
+    })
+  })
+</script>
