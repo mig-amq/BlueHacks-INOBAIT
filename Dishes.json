@@ -1,0 +1,28 @@
+var regions = ["Region VI", "Region III", "CAR", "Region XI"];
+var region_vi = ["Chicken Inasal","Hot Batchoy","Binakol","Pancit Molo"];
+var region_iii = ["Sizzling Sisig /w Egg","Sinigang na Baboy sa Bayabas","Kare-kareng Baboy","Tinumis"];
+var car = ["Pinikpikan","Pinuneg","Kilawing Baka","Binungor"];
+var car = ["Sinuglaw","Sinugbang Bihod","Sinigang na Malasugi","Satti"];
+// Region VI
+// - Chicken Inasal
+// - Hot Batchoy
+// - Binakol
+// - Pancit Molo
+
+// Region III
+// - Sizzling Sisig /w Egg
+// - Sinigang na Baboy sa Bayabas
+// - Kare-kareng Baboy
+// - Tinumis
+
+// CAR
+// - Pinikpikan
+// - Pinuneg
+// - Kilawing Baka
+// - Binungor
+
+// Region 11
+// - Sinuglaw
+// - Sinugbang Bihod
+// - Sinigang na Malasugi
+// - Satti
