@@ -5,7 +5,7 @@ const body_parser = require("body-parser")
 const hbs = require("express-handlebars")
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 
 app.use(cookie_parser("blue_hacks",  {
   maxAge: 1000 * 60 * 15,
