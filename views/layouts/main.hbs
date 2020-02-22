@@ -8,8 +8,35 @@
 </head>
 <body>
   <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  <a href="#" onclick="signOut();">Sign out</a>
+  <script>
+    function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+      });
+    }
+  </script>
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <script>
+    function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      $.ajax({
+        url: '/api/users/login',
+        method: "GET",
+        data: profile,
+        success: (result) => {
+          console.log(result)
+        },
+        error: (result) => {
+          console.error(result)
+        }
+      })
+     
+     }
+  </script>
 </body>
 </html>
