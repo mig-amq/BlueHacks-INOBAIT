@@ -35,8 +35,9 @@ module.exports = (function () {
     
     let user = req.cookies['user']
     
-    user.contact = req.query.contact,
-    user.lunch_time = req.query.lunch_time,
+    user.pickup = req.query.pickup
+    user.contact = req.query.contact
+    user.lunch_time = req.query.lunch_time
     user.subscription = {
       region: req.query.region,
       start: new Date(Date.now()),
@@ -52,6 +53,22 @@ module.exports = (function () {
       })
   })
 
+  routes.get('/users/change_pickup', (req, res) => {
+    let user = req.cookies["user"]
+    
+    firestore
+      .collection("users")
+      .doc(user.id)
+      .update({
+        pickup: req.query.pickup
+      })
+      .then(() => {
+        user.pickup = req.query.pickup
+        res.cookie('user', user)
+        res.send(user)
+      })
+  })
+  
   routes.get('/users/resubscribe', (req, res) => {
     let end = new Date(Date.now())
     end.setMonth(end.getMonth() + 1)
