@@ -1,0 +1,25 @@
+{
+  "name": "bluehacks-inobait",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mig-amq/BlueHacks-INOBAIT.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mig-amq/BlueHacks-INOBAIT/issues"
+  },
+  "homepage": "https://github.com/mig-amq/BlueHacks-INOBAIT#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0"
+  }
+}
