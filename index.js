@@ -40,7 +40,7 @@ app.get('/select_region/:regionID', (req, res) => {
 })
 
 app.get("/paypal", (req, res) => {
-  if (req.cookies["user"]) {
+  if (req.cookies["user"] && req.cookies["user"].subscription && req.cookies["user"].subscription.start && req.cookies["user"].subscription.end) {
     res.render('home', {user: req.cookies['user'], template: 'home', layout: 'home'})
   } else
   res.render("paypal", {user: req.cookies['user'], template: 'landing'});
