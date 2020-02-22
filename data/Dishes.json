@@ -1,8 +1,15 @@
+<html>
+<body>
+<script>
 var regions = ["Region VI", "Region III", "CAR", "Region XI"];
 var region_vi = ["Chicken Inasal","Hot Batchoy","Binakol","Pancit Molo"];
 var region_iii = ["Sizzling Sisig /w Egg","Sinigang na Baboy sa Bayabas","Kare-kareng Baboy","Tinumis"];
 var car = ["Pinikpikan","Pinuneg","Kilawing Baka","Binungor"];
 var car = ["Sinuglaw","Sinugbang Bihod","Sinigang na Malasugi","Satti"];
+</script>
+</body>
+</html>
+
 // Region VI
 // - Chicken Inasal
 // - Hot Batchoy
