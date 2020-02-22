@@ -1,0 +1,18 @@
+
+@font-face {
+    font-family: 'quiapo';
+    src: url('quiapo_free-webfont.woff2') format('woff2'),
+         url('quiapo_free-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'kapayapaan';
+    src: url('kapayapaan-webfont.woff2') format('woff2'),
+         url('kapayapaan-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

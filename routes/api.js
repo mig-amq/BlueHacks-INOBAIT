@@ -142,22 +142,43 @@ module.exports = (function () {
       .doc(req.params.userID)
       .get()
       .then(snapshot => {
-        if (snapshot.empty)
+        if (!snapshot.exists)
           res.send({})
-        
-        snapshot.forEach(doc => res.send(doc.data()))
+        else
+          res.send(doc.data())
       })
       .catch(err => res.send({}))
   })
 
   // Returns regional dishes
-  routes.get('/regions/dishes', (req, res) => {
-
+  routes.get('/regions/:regionID/dishes', (req, res) => {
+    firestore
+      .collection('regions')
+      .doc(req.params.regionID)
+      .get()
+      .then(snapshot => {
+        if (!snapshot.exists)
+          res.send([])
+        else
+          res.send(snapshot.data().cuisine)
+      })
+      .catch(err => res.send([]))
   })
 
   // Returns regions
   routes.get("/regions", (req, res) => {
-
+    firestore
+    .collection('regions')
+    .get()
+    .then(snapshot => {
+      if (snapshot.empty)
+        res.send([])
+      
+      let data = []
+      snapshot.forEach(doc => data.push(doc.data()))
+      res.send(data)
+    })
+    .catch(err => res.send([]))
   })
 
   // Returns QR Text

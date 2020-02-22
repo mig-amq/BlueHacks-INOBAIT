@@ -1,0 +1,104 @@
+.landing {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("/images/bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+.landing .landing__logo {
+  text-align: center;
+  padding-top: 50vh;
+  transform: translateY(-50vh);
+  animation: move_landing;
+  animation-duration: 2.25s;
+  animation-timing-function: ease-in-out;
+}
+.landing .landing__logo img {
+  height: 150px;
+  width: auto;
+  animation: hide;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-in-out;
+  opacity: 0;
+  z-index: 10;
+}
+.landing .landing__logo__title {
+  padding-top: 2em;
+  font-family: "quiapo";
+}
+.landing .landing__logo__title > span:not(.landing__logo__title__sub) {
+  font-size: 4em;
+  color: #ff5412;
+}
+.landing .landing__logo__title .landing__logo__title__sub {
+  padding-top: 3px;
+  font-family: "kapayapaan";
+  font-size: 2.5em;
+  color: #ffffff;
+}
+.landing .landing__logo__title .g-signin2 {
+  animation: show_login;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  opacity: 1;
+  padding-top: 12px;
+  padding-left: calc(50% - 300px / 2);
+}
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes show_login {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes move_landing {
+  0% {
+    transform: translateY(-25vh);
+  }
+  50% {
+    transform: translateY(-25vh);
+  }
+  100% {
+    transform: translateY(-50vh);
+  }
+}
+.logo {
+  font-family: "quiapo";
+  font-size: 5em;
+  color: #ff5412;
+  text-align: center;
+  padding-top: 10%;
+}
+
+.forms {
+  padding-top: 50%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/*# sourceMappingURL=index.css.map */

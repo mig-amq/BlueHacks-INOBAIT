@@ -12,6 +12,7 @@ app.use(cookie_parser("blue_hacks",  {
   httpOnly: true,
   signed: true
 }))
+app.use(express.static('public'))
 app.use(body_parser.urlencoded({ extended: false }))
 app.set('view engine', 'hbs')
 app.engine('hbs', hbs({
@@ -22,7 +23,13 @@ app.engine('hbs', hbs({
 }))
 
 app.get('/', (req, res) => {
-  res.render("index")
+  if (req.cookies["user"] && req.cookies["user"].subscription && req.cookies["user"].subscription.end > new Date(Date.now())) {
+    // redirect to homepage
+  } else if (req.cookies["user"]) {
+    // redirect to complete_information
+    res.render("complete_information", {user: req.cookies['user'], layout: 'complete_information', template: 'complete'})
+  } else 
+    res.render("index", {user: req.cookies['user'], template: 'landing'})
 })
 
 app.use('/api', require('./routes/api')())
