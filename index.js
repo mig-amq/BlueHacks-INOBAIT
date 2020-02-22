@@ -24,7 +24,7 @@ app.engine('hbs', hbs({
 
 app.get('/', (req, res) => {
   if (req.cookies["user"] && req.cookies["user"].subscription && req.cookies["user"].subscription.start && req.cookies["user"].subscription.end && req.cookies["user"].subscription.end > new Date(Date.now())) {
-    // redirect to homepage
+    res.render('home', {user: req.cookies['user'], template: 'home', layout: 'home'})
   } else if (req.cookies["user"]) {
     res.render("complete_information", {user: req.cookies['user'], layout: 'complete_information', template: 'complete'})
   } else 
@@ -32,10 +32,16 @@ app.get('/', (req, res) => {
 })
 
 app.get('/select_region/:regionID', (req, res) => {
+  if (req.cookies["user"] && req.cookies["user"].subscription && req.cookies["user"].subscription.start && req.cookies["user"].subscription.end && req.cookies["user"].subscription.end > new Date(Date.now())) {
+    res.render('home', {user: req.cookies['user'], template: 'home', layout: 'home'})
+  } else
   res.render("select_region", {user: req.cookies['user'], template: 'region', id: req.params.regionID})
 })
 
 app.get("/paypal", (req, res) => {
+  if (req.cookies["user"] && req.cookies["user"].subscription && req.cookies["user"].subscription.start && req.cookies["user"].subscription.end && req.cookies["user"].subscription.end > new Date(Date.now())) {
+    res.render('home', {user: req.cookies['user'], template: 'home', layout: 'home'})
+  } else
   res.render("paypal", {user: req.cookies['user'], template: 'landing'});
 })
 
