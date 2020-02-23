@@ -35,6 +35,8 @@ app.all('/', (req, res, next) => {
             req.cookie("user", doc.data())
             next()
           })
+        } else {
+          next();
         }
       })
   } else
