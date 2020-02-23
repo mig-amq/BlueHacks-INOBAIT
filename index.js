@@ -33,13 +33,9 @@ app.get('/', (req, res) => {
       .then((snapshot) => {
         if (!snapshot.empty) {
           snapshot.forEach((doc) => {
-            console.log(doc.data())
             res.cookie("user", doc.data())
+            res.render('home', {user: doc.data(), template: 'home', layout: 'home'})
           })
-        }
-        
-        if (req.cookies["user"] && req.cookies["user"].subscription && req.cookies["user"].subscription.start && req.cookies["user"].subscription.end) {
-          res.render('home', {user: req.cookies['user'], template: 'home', layout: 'home'})
         } else if (req.cookies["user"]) {
           res.render("complete_information", {user: req.cookies['user'], layout: 'complete_information', template: 'complete'})
         } else 
