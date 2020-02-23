@@ -37,15 +37,15 @@ app.get('/', (req, res) => {
             res.cookie("user", doc.data())
           })
         }
+
+        if (req.cookies["user"] && req.cookies["user"].subscription && req.cookies["user"].subscription.start && req.cookies["user"].subscription.end) {
+          res.render('home', {user: req.cookies['user'], template: 'home', layout: 'home'})
+        } else if (req.cookies["user"]) {
+          res.render("complete_information", {user: req.cookies['user'], layout: 'complete_information', template: 'complete'})
+        } else 
+          res.render("index", {user: req.cookies['user'], template: 'landing'})
       })
   }
-
-  if (req.cookies["user"] && req.cookies["user"].subscription && req.cookies["user"].subscription.start && req.cookies["user"].subscription.end) {
-    res.render('home', {user: req.cookies['user'], template: 'home', layout: 'home'})
-  } else if (req.cookies["user"]) {
-    res.render("complete_information", {user: req.cookies['user'], layout: 'complete_information', template: 'complete'})
-  } else 
-    res.render("index", {user: req.cookies['user'], template: 'landing'})
 })
 
 app.get('/select_region/:regionID', (req, res) => {
