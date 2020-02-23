@@ -25,6 +25,7 @@ app.engine('hbs', hbs({
 
 app.get('/', (req, res) => {
   if (req.cookies["user"]) {
+    console.log(req.cookies["user"])
     firestore
       .collection("users")
       .where("email", "==", req.cookies["user"].email)
@@ -32,6 +33,7 @@ app.get('/', (req, res) => {
       .then((snapshot) => {
         if (!snapshot.empty) {
           snapshot.forEach((doc) => {
+            console.log(doc.data())
             req.cookie("user", doc.data())
           })
         }
@@ -81,7 +83,7 @@ app.get("/paypal", (req, res) => {
         }
       })
   }
-  
+
   if (req.cookies["user"] && req.cookies["user"].subscription && req.cookies["user"].subscription.start && req.cookies["user"].subscription.end) {
     res.render('home', {user: req.cookies['user'], template: 'home', layout: 'home'})
   } else
