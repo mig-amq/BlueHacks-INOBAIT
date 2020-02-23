@@ -36,9 +36,15 @@ Kami ay hihingi ng renewal sa bawat isang linggo bago ang katapusan ng buwan</b>
         console.log(data)
         alert('Transaction completed by ' + details.payer.name.given_name);
         // Call your server to save the transaction
-        return $.post('/api/paypal/pay/execute', {
+        return $.ajax({
+          url: '/api/paypal/pay/execute', 
+          data: {
             orderID: data.orderID
-          })
+          },
+          success: () => {
+            location.replace("https://glacial-mesa-73388.herokuapp.com/")
+          }
+        })
       });
     }
   }).render('#paypal-button-container');
