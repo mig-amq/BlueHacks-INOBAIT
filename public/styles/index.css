@@ -307,5 +307,11 @@ p.landing__content {
   color: #fff;
   background-color: #ff5412;
 }
+.home .camera {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  height: 32px;
+}
 
 /*# sourceMappingURL=index.css.map */

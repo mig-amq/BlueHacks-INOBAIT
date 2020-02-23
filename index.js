@@ -61,13 +61,11 @@ app.get('/select_region/:regionID', (req, res) => {
         if (!snapshot.empty) {
           snapshot.forEach((doc) => {
             res.cookie("user", doc.data())
+            res.render('home', {user: req.cookies['user'], template: 'home', layout: 'home'})
           })
-        }
+        } else
+        res.render("select_region", {user: req.cookies['user'], template: 'region', id: req.params.regionID})
       })
-  }
-
-  if (req.cookies["user"] && req.cookies["user"].subscription && req.cookies["user"].subscription.start && req.cookies["user"].subscription.end) {
-    res.render('home', {user: req.cookies['user'], template: 'home', layout: 'home'})
   } else
   res.render("select_region", {user: req.cookies['user'], template: 'region', id: req.params.regionID})
 })
@@ -82,13 +80,11 @@ app.get("/paypal", (req, res) => {
         if (!snapshot.empty) {
           snapshot.forEach((doc) => {
             res.cookie("user", doc.data())
+            res.render('home', {user: req.cookies['user'], template: 'home', layout: 'home'})
           })
-        }
+        } else
+        res.render("paypal", {user: req.cookies['user'], template: 'landing'});
       })
-  }
-
-  if (req.cookies["user"] && req.cookies["user"].subscription && req.cookies["user"].subscription.start && req.cookies["user"].subscription.end) {
-    res.render('home', {user: req.cookies['user'], template: 'home', layout: 'home'})
   } else
   res.render("paypal", {user: req.cookies['user'], template: 'landing'});
 })
