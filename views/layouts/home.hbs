@@ -10,7 +10,31 @@
   <link rel="stylesheet" href="/styles/index.css">
 </head>
 <body class="{{template}}">
-  {{{body}}}
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+  {{{body}}}
+  <script>
+    function signout() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        let prom = new Promise((res, rej) => {
+          $.ajax({
+            url: "/api/users/logout",
+            success: () => {
+              res()
+            }
+          })
+        })
+
+        prom.then(() => location.reload())
+      });
+    }
+
+    function onLoad() {
+      gapi.load('auth2', function() {
+        gapi.auth2.init();
+      });
+    }
+  </script>
 </body>
 </html>

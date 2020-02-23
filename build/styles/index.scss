@@ -1,9 +1,6 @@
 * {
   box-sizing: border-box;
   font-family: 'Rubik';
-}
-
-body {
   margin: 0;
   padding: 0;
 }
@@ -12,3 +9,4 @@ body {
 @import "forms";
 @import "complete_information";
 @import "region";
+@import "home";

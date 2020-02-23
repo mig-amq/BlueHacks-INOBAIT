@@ -1,0 +1,29 @@
+<div class="home__landing">
+  <div class="settings" onclick="signout()">
+    <img class="settings__img" src="/images/settings.png">
+  </div>
+  <img src="/images/home.png" class="home__logo">
+
+  <p class="countdown__title">oras bago ang chibugan</p>
+  <div id="countdown">24:00</div>
+
+  <script>
+    let countdown = 24 * 60 * 60
+    let hours = countdown / 60 / 60,
+        minutes = countdown % 60
+
+    let f = setInterval(() => {
+      countdown--
+      hours = parseInt(countdown / 60 / 60)
+      minutes = parseInt(countdown % 60)
+
+      $("#countdown").text(((hours < 10) ? "0" + hours : hours) + ":" + ((minutes < 10) ? "0" + minutes : minutes))
+    }, 1000)
+  </script>
+</div>
+<div class="home__next">
+  <h4>NEXT STOP:</h4>
+  <h1>ILOCOS NORTE</h1>
+  <img src="/images/card.png">
+  <button>I-kansela ang masarap na ulam</button>
+</div>
