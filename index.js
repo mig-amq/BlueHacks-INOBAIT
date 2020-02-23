@@ -6,6 +6,7 @@ const hbs = require("express-handlebars")
 
 const app = express()
 const port = process.env.PORT || 3000
+const firestore = require('./data/firestore')
 
 app.use(cookie_parser("blue_hacks",  {
   maxAge: 1000 * 60 * 15,
@@ -21,6 +22,24 @@ app.engine('hbs', hbs({
   layoutsDir: path.join(__dirname, 'views/layouts'),
   partialsDir: path.join(__dirname, 'views/partials')
 }))
+
+app.use('/', (req, res, next) => {
+  if (req.cookies["user"]) {
+    firestore
+      .collection("users")
+      .where("email", "==", req.cookies["user"].email)
+      .get()
+      .then((snapshot) => {
+        if (!snapshot.empty) {
+          snapshot.forEach((doc) => {
+            req.cookie("user", doc.data())
+            next()
+          })
+        }
+      })
+  } else
+    next()
+})
 
 app.get('/', (req, res) => {
   console.log(req.cookies)
@@ -45,6 +64,7 @@ app.get("/paypal", (req, res) => {
   } else
   res.render("paypal", {user: req.cookies['user'], template: 'landing'});
 })
+
 
 app.use('/api', require('./routes/api')())
 app.listen(port, () => console.log("Listening at port: " + port + "..."))
