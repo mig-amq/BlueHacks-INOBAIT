@@ -23,7 +23,7 @@ app.engine('hbs', hbs({
   partialsDir: path.join(__dirname, 'views/partials')
 }))
 
-app.all('/', (req, res, next) => {
+app.get('/', (req, res) => {
   if (req.cookies["user"]) {
     firestore
       .collection("users")
@@ -33,18 +33,11 @@ app.all('/', (req, res, next) => {
         if (!snapshot.empty) {
           snapshot.forEach((doc) => {
             req.cookie("user", doc.data())
-            next()
           })
-        } else {
-          next();
         }
       })
-  } else
-    next()
-})
+  }
 
-app.get('/', (req, res) => {
-  console.log(req.cookies)
   if (req.cookies["user"] && req.cookies["user"].subscription && req.cookies["user"].subscription.start && req.cookies["user"].subscription.end) {
     res.render('home', {user: req.cookies['user'], template: 'home', layout: 'home'})
   } else if (req.cookies["user"]) {
@@ -54,6 +47,20 @@ app.get('/', (req, res) => {
 })
 
 app.get('/select_region/:regionID', (req, res) => {
+  if (req.cookies["user"]) {
+    firestore
+      .collection("users")
+      .where("email", "==", req.cookies["user"].email)
+      .get()
+      .then((snapshot) => {
+        if (!snapshot.empty) {
+          snapshot.forEach((doc) => {
+            req.cookie("user", doc.data())
+          })
+        }
+      })
+  }
+
   if (req.cookies["user"] && req.cookies["user"].subscription && req.cookies["user"].subscription.start && req.cookies["user"].subscription.end) {
     res.render('home', {user: req.cookies['user'], template: 'home', layout: 'home'})
   } else
@@ -61,6 +68,20 @@ app.get('/select_region/:regionID', (req, res) => {
 })
 
 app.get("/paypal", (req, res) => {
+  if (req.cookies["user"]) {
+    firestore
+      .collection("users")
+      .where("email", "==", req.cookies["user"].email)
+      .get()
+      .then((snapshot) => {
+        if (!snapshot.empty) {
+          snapshot.forEach((doc) => {
+            req.cookie("user", doc.data())
+          })
+        }
+      })
+  }
+  
   if (req.cookies["user"] && req.cookies["user"].subscription && req.cookies["user"].subscription.start && req.cookies["user"].subscription.end) {
     res.render('home', {user: req.cookies['user'], template: 'home', layout: 'home'})
   } else
