@@ -23,7 +23,7 @@ app.engine('hbs', hbs({
   partialsDir: path.join(__dirname, 'views/partials')
 }))
 
-app.use('/', (req, res, next) => {
+app.all('/', (req, res, next) => {
   if (req.cookies["user"]) {
     firestore
       .collection("users")
